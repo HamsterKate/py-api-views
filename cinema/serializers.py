@@ -12,7 +12,7 @@ class GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
         fields = "__all__"
-        read_only_fields = ("id", "name")
+        read_only_fields = ("id",)
 
 
 class ActorSerializer(serializers.ModelSerializer):
@@ -40,7 +40,7 @@ class MovieSerializer(serializers.Serializer):
     )
     genres = serializers.PrimaryKeyRelatedField(
         many=True,
-        queryset=Genre.object.all()
+        queryset=Genre.objects.all()
     )
 
     def create(self, validated_data) -> Movie:

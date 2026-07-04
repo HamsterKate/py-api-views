@@ -31,7 +31,7 @@ class GenreList(APIView):
 
 class GenreDetail(APIView):
     def get_object(self, pk) -> Genre:
-        return self.get_object_or_404
+        return get_object_or_404(Genre, pk=pk)
 
     def get(self, request, pk) -> Response:
         genre = self.get_object(pk)
@@ -97,7 +97,7 @@ class ActorDetail(
     def get(self, request, *args, **kwargs) -> Response:
         return self.retrieve(request, *args, **kwargs)
 
-    def post(self, request, *args, **kwargs) -> Response:
+    def put(self, request, *args, **kwargs) -> Response:
         return self.update(request, *args, **kwargs)
 
     def patch(self, request, *args, **kwargs) -> Response:
